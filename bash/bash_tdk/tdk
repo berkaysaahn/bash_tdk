@@ -1,0 +1,17 @@
+#! /bin/bash
+
+kelime="$1"
+json=$(curl -s "https://sozluk.gov.tr/gts?ara=${kelime}")
+anlam_say=$(echo "$json" | jq -r '.[0].anlam_say') # TDK Sağolsun anlam_say koymuş koymasaydı şunu yapacaktım: "jq -r '.[0].anlamListe | lenght" şeklinde kullanarak anlamListe içerisindekileri sayarak bulacaktım. Teşekkürler TDK iyi ki varsın
+for (( i=0; i<$anlam_say; i++ ))
+do
+  anlam=$(echo "$json" | jq -r '.[0].anlamlarListe['$i'].anlam')
+  if [ "$anlam_say" = "1" ]; then
+    echo "$kelime kelimesinin anlamı: $anlam."
+  else
+    echo -e "\e[94m$(( $i+1 )).anlam \e[0m \e[95m--->\e[0m $anlam. \n"
+  fi
+done
+
+# Daha sonra hata kontrolü yap, kelime var mı yok mu bak!!
+# Daha sonra renk ekle ve görselleştir!!
