@@ -1,7 +1,10 @@
 # bash_tdk
+
 A simple terminal tool to query word meanings directly from the **Turkish Language Association (TDK)**.  
 It lets you quickly look up unknown words right from your terminal.
+
 ---
+
 ## ⚙️ Dependencies
 - curl
 - jq
@@ -11,7 +14,9 @@ sudo pacman -S curl jq    # For Arch-based systems
 # or
 sudo apt install curl jq  # For Debian/Ubuntu
 ```
+
 ---
+
 ## 🗂️ Installation
 1. Clone the repository:
 ```bash
@@ -29,7 +34,9 @@ chmod +x tdk
 ```bash
 sudo cp tdk /usr/local/bin
 ```
+
 ---
+
 ## 🧠 Usage
 - if the script is added to the PATH:
 ```bash
