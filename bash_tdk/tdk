@@ -2,7 +2,7 @@
 
 kelime="$1"
 json=$(curl -s "https://sozluk.gov.tr/gts?ara=${kelime}")
-anlam_say=$(echo "$json" | jq -r '.[0].anlam_say') # TDK Sağolsun anlam_say koymuş koymasaydı şunu yapacaktım: "jq -r '.[0].anlamListe | lenght" şeklinde kullanarak anlamListe içerisindekileri sayarak bulacaktım. Teşekkürler TDK iyi ki varsın
+anlam_say=$(echo "$json" | jq -r '.[0].anlam_say') # TDK Sağolsun anlam_say koymuş koymasaydı şunu yapacaktım: "jq -r '.[0].anlamListe | lenght"
 for (( i=0; i<$anlam_say; i++ ))
 do
   anlam=$(echo "$json" | jq -r '.[0].anlamlarListe['$i'].anlam')
@@ -13,5 +13,4 @@ do
   fi
 done
 
-# Daha sonra hata kontrolü yap, kelime var mı yok mu bak!!
-# Daha sonra renk ekle ve görselleştir!!
+# Hata kontrolü eklenecek.
